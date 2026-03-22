@@ -3527,7 +3527,7 @@ svg g [fill] {
 	.contact:after,
 	.portfolio:after,
 	.background:before {
-		border: 35px solid rgba(8, 78, 147, 0.7);
+		border: 35px solid rgba(0, 0, 0, 0.7);
 	}
 	h2 {
 		font-size: 32px;
