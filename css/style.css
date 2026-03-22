@@ -3855,6 +3855,19 @@ svg g [fill] {
 	}
 }
 
+.google-map iframe {
+  width: 100%;
+  height: 450px; /* or use min-height */
+  border: 0;
+}
+
+/* Optional: Better responsive height control */
+@media (max-width: 768px) {
+  .google-map iframe {
+    height: 350px;
+  }
+}
+
 @keyframes run {
 	0% {
 		top: -50%;
