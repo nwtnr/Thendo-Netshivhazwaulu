@@ -1521,6 +1521,44 @@ document.querySelectorAll('[data-wa]').forEach(function(el) {
     window.open(atob(encoded), '_blank');
   });
 });
+	document.getElementById('contact-form').addEventListener('submit', async function(e) {
+  e.preventDefault(); // Stop default POST/reload
+
+  const form = e.target;
+  const loader = document.getElementById('loader');
+  const successMsg = document.getElementById('success');
+  const errorMsg = document.getElementById('error');
+
+  // Hide previous messages
+  successMsg.style.display = 'none';
+  errorMsg.style.display = 'none';
+  loader.style.display = 'inline-block'; // Show spinner (adjust CSS if needed)
+
+  try {
+    const formData = new FormData(form);
+
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    loader.style.display = 'none';
+
+    if (response.ok) {
+      successMsg.style.display = 'block';
+      form.reset(); // Clear form fields
+    } else {
+      throw new Error('Formspree error: ' + response.status);
+    }
+  } catch (err) {
+    console.error('Submission failed:', err);
+    loader.style.display = 'none';
+    errorMsg.style.display = 'block';
+  }
+});
 </script>
 
 </body>
